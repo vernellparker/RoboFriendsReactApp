@@ -2,6 +2,7 @@ import React, {Component}from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox'
 import Scroll from '../components/Scroll';
+import ErrorBoundry from '../components/ErrorBoundry'
 import '../css/App.css'
 
 
@@ -40,18 +41,18 @@ export default class App extends Component  {
         })
 
         return !robots.length ?
-        
                 <div className="f1 text-screen-middle">
                         <h1 >Loading</h1>
-                </div> :
-             
+                </div> :  
              (
                 <div className='tc'>
                     <h1 className='f1'>RoboFriends</h1>
                     <SearchBox searchChange = {this.onSearchChange}/>
                     <div style={{overflow:'hidden' }}>
                     <Scroll>
-                        <CardList robots={filteredRobots}/>
+                        <ErrorBoundry>
+                            <CardList robots={filteredRobots}/>
+                        </ErrorBoundry>
                     </Scroll>
                     </div>
                 </div>
