@@ -15,15 +15,16 @@ const mapStateToProps = state => {
         isPending: state.requestRobots.isPending,
         error: state.requestRobots.error
     }
-}
+};
 
 //the dispatch field is props 
+//actions
 const mapDispatchToProps = (dispatch) =>{
     return{
         onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
         onRequestRobots:() => dispatch(requestRobots())
     }
-}
+};
 
  class App extends Component  {
 
@@ -39,7 +40,7 @@ const mapDispatchToProps = (dispatch) =>{
             
         const filteredRobots = robots.filter(robot => {
             return robot.name.toLowerCase().includes(searchField.toLowerCase());
-        })
+        });
         
 
         return isPending ?
